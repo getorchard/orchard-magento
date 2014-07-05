@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <includes>
+        <j2tajaxcheckout>
+            <J2t_Ajaxcheckout_Model_Ajaxloaderimg />
+            <J2t_Ajaxcheckout_Model_Appear />
+            <J2t_Ajaxcheckout_Model_Observer />
+            <J2t_Ajaxcheckout_Model_Otherlist />
+            <J2t_Ajaxcheckout_Model_Template />
+            <J2t_Ajaxcheckout_Model_Templaterounded />
+            <J2t_Ajaxcheckout_Model_Templatesquared />
+            <J2t_Ajaxcheckout_Model_Transparency />
+            <J2t_Ajaxcheckout_Model_Yesno />
+            <J2t_Ajaxcheckout_Helper_Data />
+            <J2t_Ajaxcheckout_Block_Productdetails />
+            <J2t_Ajaxcheckout_Block_J2thead />
+            <J2t_Ajaxcheckout_Block_Cartdelete />
+            <J2t_Ajaxcheckout_Block_Cart />
+            <J2t_Ajaxcheckout_Block_Cart_Sidebar />
+            <J2t_Ajaxcheckout_Block_Adminhtml_Field />
+            <J2t_Ajaxcheckout_IndexController />
+            <J2t_Ajaxcheckout_ProductController />
+        </j2tajaxcheckout>
+    </includes>
+</config>

@@ -1,0 +1,24 @@
+loading...,laden...
+Continue shopping,Weiter einkaufen
+View cart & checkout,Warenkorb & Kasse
+You might also like:,Sie könnten auch an folgenden Produkten interessiert sein:
+Loading box size,Größe der Ladebox
+Loading box size. e.g.: 260x50,"Größe der Ladebox, z.B.: 260x50"
+Confirm box size,Größe der Bestätigungsbox
+Confirm box size. e.g.: 260x134,"Größe der Bestätigungsbox, z.B.: 260x134"
+Image product size,Größe des Produktbildes
+Confirm box size. e.g.: 55x55,"Größe der Bestätigungsbox, z.B.: 55x55"
+Show Popup,Popup anzeigen
+Show popup when product is added.,"Popup anzeigen, wenn ein Produkt hinzugefügt wird."
+Show associated products,Zeige ähnliche Produkte
+Show associated products in popup when product is added.,Zeige beim hinzufügen von Produkten ähnliche Produkte im Popup.
+Related number of element,Ähnliche Produkte
+Related number of element to be shown.,Zahl der ähnlichen Produkte die angezeigt werden sollen.
+Related number of element per line,Zahl der ähnlichen Produkte pro Zeile
+Related image size,Ähnliche Produkte Bildgröße
+%s was successfully added to your shopping cart.,%s wurde erfolgreich zum Warenkorb hinzugefügt.
+Associated products,Ähnliche Produkte
+Associated list of products to be shown.,Liste ähnlicher Produkte die angezeigt werden.
+Fast configuration,Schnelle Konfiguration
+"Fast configuration mode is a fast way to configure the module by using default magento product view page (Only for Magento 1.5.x or greater). For highly customized magento installation, set no and refer to our customization manual.","Der schnelle Konfigurationsmodus ist ein schneller Weg, das Modul zu konfigurieren, wenn die Standard Magento product view page verwendet wird (Nur Magento 1.5.x oder höher). Für stark angepasste Magento Installationen, hier auf Nein setzen und unser Customisation Manual zur Anpassung nutzen."
+Yes (only for Magento 1.5.x or greater),JA (nur für Magento 1.5.x oder höher)

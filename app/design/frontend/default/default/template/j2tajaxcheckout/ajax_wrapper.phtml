@@ -1,0 +1,166 @@
+<script type="text/javascript">
+//<![CDATA[    
+    String.prototype.j2ttrim = function() {
+      return this.replace(/^\s+|\s+$/g,"");
+    }
+    
+    <?php /*if ($cookies = Mage::getSingleton('core/cookie')->get()):?>
+        var cookie_available = true;
+    <?php else:?>    
+        var cookie_available = false;
+    <?php endif;*/?>
+        
+    var cookie_available = (navigator.cookieEnabled)? true : false;
+    //if not IE4+ nor NS6+
+    if (typeof navigator.cookieEnabled == "undefined" && !cookie_available){
+        document.cookie = "testcookie";
+        cookie_available = (document.cookie.indexOf("testcookie") != -1) ? true : false;
+    }
+    
+    var headercart_left_adjust = <?php echo (int)Mage::getStoreConfig('j2tajaxcheckout/default/headercart_left_adjust', Mage::app()->getStore()->getId());?>;
+    var headercart_top_adjust = <?php echo (int)Mage::getStoreConfig('j2tajaxcheckout/default/headercart_top_adjust', Mage::app()->getStore()->getId());?>;
+    
+    var cookie_redirect = <?php echo Mage::getStoreConfig('web/browser_capabilities/cookies', Mage::app()->getStore()->getId());?>;
+    var enable_cookie_url = "<?php echo Mage::getUrl("enable-cookies");?>";
+    
+    var js_bundle_url = "<?php echo $this->getSkinUrl('js/bundle.js') ?>";
+    var js_varien_product_url = "<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS)."varien/product.js";?>";
+    var js_varien_calendar_url = "<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS)."calendar/calendar.js";?>";
+    var js_varien_calendar_setup_url = "<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS)."calendar/calendar-setup.js";?>";
+    
+    <?php if (Mage::getConfig()->getModuleConfig('OrganicInternet_SimpleConfigurableProducts')->is('active', 'true')):?>
+        var scp_on = true;
+        var js_scp_url = "<?php echo $this->getSkinUrl('js/scp_product_extension.js') ?>";
+    <?php else:?>
+        var scp_on = false;
+        var js_scp_url = "";
+    <?php endif;?>
+        
+    <?php if (Mage::app()->getRequest()->getControllerName() == 'product'):?>
+        var on_product_page = true;
+    <?php else: ?>
+        var on_product_page = false;
+    <?php endif;?>
+    
+    var js_skin_js_url = "<?php echo $this->getSkinUrl('js') ?>";
+    var js_skin_css_url = "<?php echo $this->getSkinUrl('css') ?>";
+    
+    var j2t_ajax_cart_on_show_option = '<?php echo str_replace("\n", " ", str_replace("\r", " " , addcslashes(Mage::getStoreConfig('j2tajaxcheckout/triggerevent/j2t_ajax_cart_on_show_option', Mage::app()->getStore()->getId()), "\'")));?>';
+    var j2t_ajax_cart_on_show_confirm = '<?php echo str_replace("\n", " ", str_replace("\r", " ", addcslashes(Mage::getStoreConfig('j2tajaxcheckout/triggerevent/j2t_ajax_cart_on_show_confirm', Mage::app()->getStore()->getId()), "\'")));?>';
+    var j2t_ajax_cart_after_delete = '<?php echo str_replace("\n", " ", str_replace("\r", " ", addcslashes(Mage::getStoreConfig('j2tajaxcheckout/triggerevent/j2t_ajax_cart_after_delete', Mage::app()->getStore()->getId()), "\'")));?>';
+    
+    var j2t_ajax_cart_appear_headercart = '<?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_appear_headercart', Mage::app()->getStore()->getId());?>';
+    
+    var j2t_ajax_cart_options_restrictions = <?php echo (int)Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_options_restrictions', Mage::app()->getStore()->getId());?>;
+    var j2t_ajax_cart_countdown = <?php echo (int)Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_countdown', Mage::app()->getStore()->getId());?>;
+    
+    var j2t_ajax_cart_countdown_redirection = <?php echo (int)Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_countdown_redirection', Mage::app()->getStore()->getId());?>;
+    var j2t_cart_url = "<?php echo Mage::getUrl('checkout/cart');?>";
+    
+    var j2t_ajax_cart_show_headercart = <?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_show_headercart', Mage::app()->getStore()->getId());?>;
+    var j2t_ajax_cart_fast_configuration_mode = <?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_fast_configuration_mode', Mage::app()->getStore()->getId());?>;
+    
+    var j2t_ajax_cart_transparency = <?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_transparency', Mage::app()->getStore()->getId());?>;
+    
+    var ajax_cart_show_popup = <?php echo (int)Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_show_popup', Mage::app()->getStore()->getId());?>;
+    var ajax_cart_qty = <?php echo (int)Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_qty', Mage::app()->getStore()->getId());?>;
+    <?php $loading_arr = explode("x",Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_loading_size', Mage::app()->getStore()->getId()));?>
+    <?php $confirm_arr = explode("x",Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_confirm_size', Mage::app()->getStore()->getId()));?>
+    <?php $model_name = Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_template', Mage::app()->getStore()->getId()); ?>
+
+    var j2t_custom_top_link = '<?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_custom_top_link', Mage::app()->getStore()->getId()); ?>';
+    var j2t_custom_cart = '<?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_custom_cart', Mage::app()->getStore()->getId()); ?>';
+    var j2t_custom_mini_cart = '<?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_custom_mini_cart', Mage::app()->getStore()->getId()); ?>';
+    
+    
+    //////////////////////////////
+    
+    var j2t_product_essentials = '<?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_product_essentials', Mage::app()->getStore()->getId()); ?>';
+    var j2t_product_image = '<?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_product_image', Mage::app()->getStore()->getId()); ?>';
+    var j2t_product_shop = '<?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_product_shop', Mage::app()->getStore()->getId()); ?>';
+    var j2t_product_options = '<?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_product_options', Mage::app()->getStore()->getId()); ?>';
+    var j2t_product_bottom = '<?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_product_bottom', Mage::app()->getStore()->getId()); ?>';
+    
+    if (j2t_ajax_cart_fast_configuration_mode == 1){
+        j2t_product_essentials = '';
+        j2t_product_image = '';
+        j2t_product_shop = '';
+        j2t_product_options = '';
+        j2t_product_bottom = '';
+    }
+
+    //////////////////////////////
+
+    var j2t_show_options = '<?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_options', Mage::app()->getStore()->getId()); ?>';
+    var j2t_show_close = <?php if (Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_show_close', Mage::app()->getStore()->getId()) == 1) echo 'true'; else echo 'false'; ?>;
+    var j2t_blink = '<?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_blink', Mage::app()->getStore()->getId()); ?>';
+    j2t_blink = j2t_blink.j2ttrim();
+    
+    var j2t_ajax_cart_debug = '<?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_debug', Mage::app()->getStore()->getId()); ?>';
+    
+    var j2t_ajax_cart_show_details = '<?php echo Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_show_details', Mage::app()->getStore()->getId()); ?>';
+    var j2t_current_store_id = '<?php echo Mage::app()->getStore()->getId();?>';
+    
+
+    var loadingW = <?php echo $loading_arr[0];?>;
+    var loadingH = <?php echo $loading_arr[1];?>;
+    var confirmW = <?php echo $confirm_arr[0];?>;
+    var confirmH = <?php echo $confirm_arr[1];?>;
+    <?php if ($model_name != 'default'):?>
+    <?php $temp = Mage::getModel("j2tajaxcheckout/template$model_name");?>
+    var use_template = true;
+    var box_width_height = <?php echo $temp->getWH(); ?>;
+    <?php else:?>
+    var use_template = false;
+    var box_width_height = 1;
+    <?php endif;?>
+    var j2tajaxcart_url_check = "<?php echo $this->getUrl('j2tajaxcheckout/index/productcheck', array("product" => "product_id"));?>";
+    var j2tajaxcart_url_product_details = "<?php echo $this->getUrl('j2tajaxcheckout/index/productdetails', array("product" => "product_id"));?>";
+    var j2tajaxcart_url_product_fast_configuration = "<?php echo $this->getUrl('j2tajaxcheckout/product', array("id" => "product_id", "current_store_id" => Mage::app()->getStore()->getId()));?>";
+    var j2tajaxcart_url_header_cart = "<?php echo $this->getUrl('j2tajaxcheckout/product/topcart');?>";
+    //&current_store_id='+j2t_current_store_id
+    //]]>
+</script>
+
+<div class="j2t-overlay" id="j2t-overlay" style="display: none;">&nbsp;</div>
+
+<div class="j2t-loading-data" id="j2t-loading-data" style="display: none;">
+    <div class="j2t-ajax-child"> 
+        <?php $ajax_img = Mage::getStoreConfig('j2tajaxcheckout/default/j2t_ajax_cart_loading_img', Mage::app()->getStore()->getId());?>
+        <?php $ajax_img = ($ajax_img) ? "-$ajax_img" : "";?>
+        <img alt="<?php echo $this->__('loading...');?>" src="<?php echo $this->getSkinUrl('images/j2t/ajax-loader'.$ajax_img.'.gif');?>"/>
+        <p><?php echo $this->__('loading...');?></p>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+    var j_ajax_progess_box = '<div style="display: none; width: <?php echo $loading_arr[0];?>px; height: <?php echo $loading_arr[1];?>px; top: 550px;" class="j2tajax-progress" id="j2t_ajax_progress">&nbsp;</div>';
+    var j_ajax_confirm_box = '<div style="display: none; width: <?php echo $confirm_arr[0];?>px; height: <?php echo $confirm_arr[1];?>px; position: fixed; top: 496px;" class="j2tajax-confirm" id="j2t_ajax_confirm">&nbsp;</div>';
+    //]]>
+</script>
+
+
+<div id="j2t-temp-div" style="display:none;"></div>
+
+<div id="j2t-div-template" style="display:none;">
+        <div class="j2t-box-tl">&nbsp;</div>
+        <div class="j2t-box-tm">&nbsp;</div>
+        <div class="j2t-box-tr">&nbsp;</div>
+        <div class="j2t-box-cl">&nbsp;</div>
+        <div class="j2t-box-cm">&nbsp;</div>
+        <div class="j2t-box-cr">&nbsp;</div>
+        <div class="j2t-box-bl">&nbsp;</div>
+        <div class="j2t-box-bm">&nbsp;</div>
+        <div class="j2t-box-br">&nbsp;</div>
+</div>
+
+<div class="j2t_ajax_qty" id="j2t_ajax_qty" style="display:none;">
+    <div class="add-to-cart">
+        <label for="qty"><?php echo $this->__('Qty:') ?></label>
+        <input type="text" name="qty" maxlength="12" value="1" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+        <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart j2t-btn-cart"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+    </div>
+</div>
+
+<div id="j2t-product-details" style="display:none;"></div>

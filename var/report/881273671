@@ -1,0 +1,13 @@
+a:4:{i:0;s:91:"SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mage.core_website' doesn't exist";i:1;s:1410:"#0 C:\xampp\htdocs\magento\lib\Varien\Db\Statement\Pdo\Mysql.php(110): Zend_Db_Statement_Pdo->_execute(Array)
+#1 C:\xampp\htdocs\magento\app\code\core\Zend\Db\Statement.php(291): Varien_Db_Statement_Pdo_Mysql->_execute(Array)
+#2 C:\xampp\htdocs\magento\lib\Zend\Db\Adapter\Abstract.php(480): Zend_Db_Statement->execute(Array)
+#3 C:\xampp\htdocs\magento\lib\Zend\Db\Adapter\Pdo\Abstract.php(238): Zend_Db_Adapter_Abstract->query('SELECT `core_we...', Array)
+#4 C:\xampp\htdocs\magento\lib\Varien\Db\Adapter\Pdo\Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SELECT `core_we...', Array)
+#5 C:\xampp\htdocs\magento\lib\Zend\Db\Adapter\Abstract.php(776): Varien_Db_Adapter_Pdo_Mysql->query(Object(Varien_Db_Select), Array)
+#6 C:\xampp\htdocs\magento\app\code\core\Mage\Core\Model\Resource\Config.php(63): Zend_Db_Adapter_Abstract->fetchAssoc(Object(Varien_Db_Select))
+#7 C:\xampp\htdocs\magento\app\code\core\Mage\Core\Model\Config.php(354): Mage_Core_Model_Resource_Config->loadToXml(Object(Mage_Core_Model_Config))
+#8 C:\xampp\htdocs\magento\app\code\core\Mage\Core\Model\Config.php(260): Mage_Core_Model_Config->loadDb()
+#9 C:\xampp\htdocs\magento\app\code\core\Mage\Core\Model\App.php(270): Mage_Core_Model_Config->init(Array)
+#10 C:\xampp\htdocs\magento\app\Mage.php(616): Mage_Core_Model_App->init('default', 'store', Array)
+#11 C:\xampp\htdocs\magento\install.php(128): Mage::app('default')
+#12 {main}";s:3:"url";s:20:"/magento/install.php";s:11:"script_name";s:20:"/magento/install.php";}

@@ -1,0 +1,203 @@
+.header-language-background {
+  display: none;
+}
+
+.skip-account {
+   display: none;
+}
+#header-search {
+	display:none!Important;	
+}
+
+.category-title h1 {
+display: none;
+}
+
+@media only screen and (min-width: 771px) {
+	.page-header {
+		max-width: 100%!important;
+		margin: 0 auto;
+		padding: 0 70px!important;
+		background: #333;
+		max-height: 71px!important;
+	}
+	.logo {
+		max-width: 207px!important;
+		min-height: 90px;
+		padding: 12px!Important;
+	}
+	
+	#nav{
+		width:400px;
+		/* background:yellow; */
+		float:right;
+		margin-top: -85px;
+		margin-right:100px;	
+	}
+	
+	#header-nav {
+		display: block;
+		border-bottom: 0px!important;
+	}
+	
+	.block-title h2, .block-title h3, .block-title strong {
+		color: #333!important;
+	}
+	.nav-primary a {
+		text-decoration: none;
+		position: relative;
+		display: block;
+		color: #FFFFFF!Important;
+		line-height: 30px;
+		font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+		padding-right: 25px;
+	}
+    
+    .toolbar {
+        margin-top: 0px!important;
+        margin-bottom: 15px;
+        border-bottom: 0px solid #cccccc!important;
+        border-top: 0px solid #cccccc!important;
+        background: #f4f4f4;
+        padding: 5px 10px 0px 10px;
+}
+	.breadcrumbs {
+    overflow: hidden;
+    margin:-5px 0 15px!important;
+    }
+		
+	.add-to-links a {
+		display: inline-block;
+
+		font-size: 10px;
+		background: rgba(39, 162, 0, 0.56);
+		min-width: 116px;
+		padding: 4px!important;
+		text-align: center;
+		margin-top: 0px;
+		color: white;
+		border-radius: 4px;
+}
+}
+
+/* --Accessories Popup-- */
+
+div.inner-ajax-content {padding-bottom:10px;background: white;}
+
+div.j2t-box-tl {background:none!important;}
+div.j2t-box-tm {background:none!important;}
+div.j2t-box-tr {background:none!important;}
+
+div.j2t-box-cl {background:none!important;}
+div.j2t-box-cm {background:none!important;}
+div.j2t-box-cr {background:none!important;}
+
+div.j2t-box-bl {background:none!important;}
+div.j2t-box-bm {background:none!important;}
+div.j2t-box-br {background:none!important;}
+
+.product-options ul.options-list label, .col2-set .form-list .control label {
+min-width: inherit;
+width:100%!important;
+max-width: 100%;
+}
+
+.product-options dt {
+text-align: left;
+}
+
+.product-options label {
+font-size: 16px;
+}
+.product-options ul.options-list li {
+text-align: left;
+}
+
+.product-shop .sharing-links{
+ display:inline-flex;
+ padding:20px;
+ float:left;
+ /background:blue;
+}
+
+.product-shop .sharing-links > *{
+ padding-right:20px;
+ padding-top:10px;
+ font-size:11px
+}
+
+input[type=number].qty, input[type=text].qty {
+height: 34px!Important;
+
+}
+
+div#j2t_ajax_confirm_wrapper div.add-to-cart {
+padding-top: 20px;
+text-align: left;
+display: inline-flex;
+float:right;
+}
+
+div#j2t_ajax_confirm_wrapper div.add-to-cart > div {
+padding-left: 10px;
+
+}
+.product-img-box {
+width: 30%!important;
+float: left;
+}
+.product-view .product-shop {
+width: 65%!Important;
+float: right;
+}
+.product-image-thumbs li:first-child {
+margin-left: -14px!Important;;
+}
+.product-image-thumbs a {
+display: inline-block;
+border: 1px solid transparent;
+padding: 0px;
+margin: 0px!important;
+width: 54px!Important;;
+}
+
+.more-views h2{display:None!Important;}
+
+.product-view .product-shop .product-name .h1, .product-view .product-img-box .product-name h1 {
+color: #333!Important;
+margin-bottom: 10px;
+border: 0;
+}
+
+.product-view .product-shop .product-name .h1:after{
+ content:'Shipping is free';   
+ display:block;
+ font-family:times;
+ text-transform:lowercase;
+ color:#3399cc;
+ margin-top:15px;
+ margin-bottom:10px;
+ font-size:22px;
+ font-style:oblique
+ 
+}
+
+
+.product-view .product-shop .price-box .regular-price .price:after{
+     content:'Taxes Included';
+     display:block;
+     font-size:12.5px;
+     color:#333;
+     font-style:oblique;
+     margin-top:4px
+}
+
+.link-wishlist{display:none!important}
+
+.products-grid .actions {
+    padding-top: 0px!important;
+    position: absolute;
+    bottom: 0px;
+    min-height: 85px;
+    width: 100%;
+}

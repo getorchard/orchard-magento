@@ -1,0 +1,571 @@
+<config>
+    <tabs>
+        <j2t_all>
+            <label>J2T Modules</label>
+            <class>j2t-all-area</class>
+            <sort_order>100</sort_order>
+        </j2t_all>
+    </tabs>
+    <sections>
+        <j2tajaxcheckout translate="label comment" module="j2tajaxcheckout">
+            <tab>j2t_all</tab>
+            <class>j2t-ajaxcart-module</class>
+            <label>J2T Ajax Cart</label>
+            <frontend_type>text</frontend_type>
+            <sort_order>30</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <default translate="label comment" module="j2tajaxcheckout">
+                    <label>Configuration</label>
+                    
+                    <comment><![CDATA[
+                        <script type="text/javascript">
+                          
+                            checkFastMode = function(){
+                                    if ($('j2tajaxcheckout_default_j2t_ajax_cart_fast_configuration_mode').getValue() == 0){
+                                        $('j2tajaxcheckout_default_j2t_ajax_cart_product_essentials').up(1).show();
+                                        $('j2tajaxcheckout_default_j2t_ajax_cart_product_image').up(1).show();
+                                        $('j2tajaxcheckout_default_j2t_ajax_cart_product_shop').up(1).show();
+                                        $('j2tajaxcheckout_default_j2t_ajax_cart_product_options').up(1).show();
+                                        $('j2tajaxcheckout_default_j2t_ajax_cart_product_bottom').up(1).show();
+                                    } else {
+                                        $('j2tajaxcheckout_default_j2t_ajax_cart_product_essentials').up(1).hide();
+                                        $('j2tajaxcheckout_default_j2t_ajax_cart_product_image').up(1).hide();
+                                        $('j2tajaxcheckout_default_j2t_ajax_cart_product_shop').up(1).hide();
+                                        $('j2tajaxcheckout_default_j2t_ajax_cart_product_options').up(1).hide();
+                                        $('j2tajaxcheckout_default_j2t_ajax_cart_product_bottom').up(1).hide();
+                                    }
+                                };
+                        
+                            Event.observe(window, 'load', function() {
+                                    Event.observe('j2tajaxcheckout_default_j2t_ajax_cart_fast_configuration_mode', 'change', checkFastMode);
+                                    checkFastMode();
+                                });
+                        
+                        
+                            function getImgName() {
+                                //frontend_skin_url
+                                var url_loader = frontend_skin_url+"/j2t/ajax-loader-IMAGENAME.gif";
+                                if ($('j2tajaxcheckout_default_j2t_ajax_cart_loading_img').getValue() == ""){
+                                    url_loader = url_loader.replace("-IMAGENAME", "");
+                                } else {
+                                    url_loader = url_loader.replace("IMAGENAME", $('j2tajaxcheckout_default_j2t_ajax_cart_loading_img').getValue());
+                                }
+                                if (!$("j2t_img_loader")){
+                                    Element.insert( $('j2tajaxcheckout_default_j2t_ajax_cart_loading_img'), {'after': '<img src="'+url_loader+'" id="j2t_img_loader" valign="middle" />'} );
+                                } else {
+                                    $("j2t_img_loader").src = url_loader;
+                                }
+                            }
+                        
+                        
+                            function appearType(){
+                                    if ($('j2tajaxcheckout_default_j2t_ajax_cart_show_headercart').getValue() == 1){
+                                        $('j2tajaxcheckout_default_j2t_ajax_cart_appear_headercart').up(1).show();
+                                        $('j2tajaxcheckout_default_headercart_left_adjust').up(1).show();
+                                        $('j2tajaxcheckout_default_headercart_top_adjust').up(1).show();
+                                    } else {
+                                        $('j2tajaxcheckout_default_j2t_ajax_cart_appear_headercart').up(1).hide();
+                                        $('j2tajaxcheckout_default_headercart_left_adjust').up(1).hide();
+                                        $('j2tajaxcheckout_default_headercart_top_adjust').up(1).hide();
+                                    }
+                                }
+                            
+                        
+                            Event.observe(window, 'load', function() {
+                                    Event.observe('j2tajaxcheckout_default_j2t_ajax_cart_show_headercart', 'change', appearType);
+                                    appearType();
+                                });
+                        
+                        
+                            Event.observe(window, 'load', function() {
+                                Event.observe('j2tajaxcheckout_default_j2t_ajax_cart_loading_img', 'change', getImgName);
+                                getImgName();
+                            });
+                        
+                        
+                        </script>
+                            ]]>
+                    </comment>
+                    
+                    
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+			<j2t_ajax_cart_active translate="label">
+                            <label>Active</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Activate/deactivate the module.]]></comment>
+                        </j2t_ajax_cart_active>
+                        
+                        <j2t_ajax_cart_minified translate="label">
+                            <label>Minified</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Use minified scripts in order to make it load in a faster way.]]></comment>
+                        </j2t_ajax_cart_minified>
+                        
+                        <j2t_ajax_cart_debug translate="label">
+                            <label>Debug mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[In case of problems, activate debug mode. It will help you to find a solution in case of problem.]]></comment>
+                        </j2t_ajax_cart_debug>
+
+                        <j2t_ajax_cart_template translate="label">
+                            <label>Theme</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>j2tajaxcheckout/template</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Theme of J2T ajax boxes.]]></comment>
+                        </j2t_ajax_cart_template>
+                        
+                        <j2t_ajax_cart_transparency translate="label">
+                            <label>Background Transparency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>j2tajaxcheckout/transparency</source_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Transparency of the background overlay.]]></comment>
+                        </j2t_ajax_cart_transparency>
+
+                        <j2t_ajax_cart_loading_size translate="label">
+                            <label>Loading box size</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Loading box size. e.g.: 260x50]]></comment>
+                        </j2t_ajax_cart_loading_size>
+
+                        <j2t_ajax_cart_confirm_size translate="label">
+                            <label>Confirm box size</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Confirm box size. e.g.: 260x134]]></comment>
+                        </j2t_ajax_cart_confirm_size>
+
+                        <j2t_ajax_cart_image_size translate="label">
+                            <label>Image product size</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Confirm box size. e.g.: 55x55]]></comment>
+                        </j2t_ajax_cart_image_size>
+
+                        <j2t_ajax_cart_show_popup translate="label">
+                            <label>Show Popup</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Show popup when product is added.]]></comment>
+                        </j2t_ajax_cart_show_popup>
+
+                        <j2t_ajax_cart_qty translate="label">
+                            <label>Ask quantity</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Ask the user to enter quantity (for simple products).]]></comment>
+                        </j2t_ajax_cart_qty>
+                        
+                        <j2t_ajax_cart_show_upsells translate="label">
+                            <label>Show associated products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Show associated products in popup when product is added.]]></comment>
+                        </j2t_ajax_cart_show_upsells>
+                        
+                        <j2t_ajax_cart_other_products translate="label">
+                            <label>Associated products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>j2tajaxcheckout/otherlist</source_model>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Associated list of products to be shown.]]></comment>
+                        </j2t_ajax_cart_other_products>
+                        
+                        <j2t_ajax_cart_upsells_nb translate="label">
+                            <label>Related number of element</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Related number of element to be shown.]]></comment>
+                        </j2t_ajax_cart_upsells_nb>
+                        
+                        <j2t_ajax_cart_upsells_nb_per_line translate="label">
+                            <label>Related number of element per line</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </j2t_ajax_cart_upsells_nb_per_line>
+
+                        <j2t_ajax_cart_upsells_image_size translate="label">
+                            <label>Related image size</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </j2t_ajax_cart_upsells_image_size>
+
+
+                        <j2t_ajax_cart_options translate="label">
+                            <label>Options in ajax box</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>105</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Show options in ajax box. If no, customer is redirected to product page.]]></comment>
+                        </j2t_ajax_cart_options>
+                        
+                        
+                        <j2t_ajax_cart_options_restrictions translate="label">
+                            <label>Product restrictions</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>106</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Disable ajax box from product list for specified product ids (i.e. 10,112). Values must be separed by commas, whithout any spaces.]]></comment>
+                        </j2t_ajax_cart_options_restrictions>
+                        
+                        
+                        <j2t_ajax_cart_countdown translate="label">
+                            <label>Countdown</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>107</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Countdown value in seconds. Use 0 if you don't want to use this feature.]]></comment>
+                            <validate>validate-zero-or-greater</validate>
+                        </j2t_ajax_cart_countdown>
+                        
+                        <j2t_ajax_cart_countdown_redirection translate="label">
+                            <label>Countdown cart redirection</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>108</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Redirects user to shopping cart when countdown reaches 0 if set to yes, otherwise, user will stay on initial page.]]></comment>
+                        </j2t_ajax_cart_countdown_redirection>
+                        
+                        
+                        <j2t_ajax_cart_fast_configuration_mode translate="label">
+                            <label>Fast configuration</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>j2tajaxcheckout/yesno</source_model>
+                            <sort_order>109</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Fast configuration mode is a fast way to configure the module by using default magento product view page (Only for Magento 1.4.x or greater). For highly customized magento installation, set no and refer to our customization manual.]]></comment>
+                        </j2t_ajax_cart_fast_configuration_mode>
+
+
+                        <j2t_ajax_cart_custom_top_link translate="label">
+                            <label>Custom top link class name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </j2t_ajax_cart_custom_top_link>
+                        <j2t_ajax_cart_custom_cart translate="label">
+                            <label>Custom cart class name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </j2t_ajax_cart_custom_cart>
+
+                        <j2t_ajax_cart_custom_mini_cart translate="label">
+                            <label>Custom mini cart class name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </j2t_ajax_cart_custom_mini_cart>
+
+
+                        <j2t_ajax_cart_product_essentials translate="label">
+                            <label>Custom product essentials class name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Class name of product block on product page.]]></comment>
+                        </j2t_ajax_cart_product_essentials>
+                        
+                        
+                        <j2t_ajax_cart_product_image translate="label">
+                            <label>Custom product image class name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Class name of product image block on product page.]]></comment>
+                        </j2t_ajax_cart_product_image>
+                        
+                        <j2t_ajax_cart_product_shop translate="label">
+                            <label>Custom product side class name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Class name of product side block on product page.]]></comment>
+                        </j2t_ajax_cart_product_shop>
+                        
+                        <j2t_ajax_cart_product_options translate="label">
+                            <label>Custom product option class name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Class name of product options block on product page.]]></comment>
+                        </j2t_ajax_cart_product_options>
+                        
+                        <j2t_ajax_cart_product_bottom translate="label">
+                            <label>Custom product options bottom class name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Class name of product options bottom block on product page.]]></comment>
+                        </j2t_ajax_cart_product_bottom>
+                        
+                        <j2t_ajax_cart_show_close translate="label">
+                            <label>Show closing button</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Show button allowing the customer to close the ajax box.]]></comment>
+                        </j2t_ajax_cart_show_close>
+                        
+                        <j2t_ajax_cart_blink translate="label">
+                            <label>Blink areas</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Blink elements when add to cart process is done (in css style). e.g: .sidebar div.block-cart, .top-link-cart]]></comment>
+                        </j2t_ajax_cart_blink>
+
+                        <j2t_ajax_cart_show_details translate="label">
+                            <label>Show product details</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Show product details on quantity and options boxes.]]></comment>
+                        </j2t_ajax_cart_show_details>
+                        
+                        <j2t_ajax_cart_show_headercart translate="label">
+                            <label>Show header cart details</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Show header cart details summary.]]></comment>
+                        </j2t_ajax_cart_show_headercart>
+                        
+                        <j2t_ajax_cart_appear_headercart translate="label">
+                            <label>Header cart configuration</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>j2tajaxcheckout/appear</source_model>
+                            <sort_order>225</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Configuration of the way the header cart should appear.]]></comment>
+                        </j2t_ajax_cart_appear_headercart>
+                        
+                        <headercart_left_adjust translate="label">
+                            <label>Left Position Adjustment</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>226</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                            <comment><![CDATA[Left Position Adjustment allow you to fix header cart position according to your requirements (negative value is possible).]]></comment>
+                        </headercart_left_adjust>
+                        <headercart_top_adjust translate="label">
+                            <label>Top Position Adjustment</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>227</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                            <comment><![CDATA[Top Position Adjustment allow you to fix header cart position according to your requirements (negative value is possible).]]></comment>
+                        </headercart_top_adjust>
+                        
+                        <j2t_ajax_cart_loading_img translate="label">
+                            <label>Loader Image</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>j2tajaxcheckout/ajaxloaderimg</source_model>
+                            <!-- J2t_Ajaxcheckout_Block_Adminhtml_Field -->
+                            <frontend_model>j2tajaxcheckout/adminhtml_field</frontend_model>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Image used when the ajax boxes are waiting for responses.]]></comment>
+                        </j2t_ajax_cart_loading_img>
+                    </fields>
+
+                </default>
+                
+                
+                <topcartconfig translate="label comment" module="j2tajaxcheckout">
+                    <label>Top cart configuration</label>
+                    <comment><![CDATA[Configure the top cart sentences. Note that the inserted content will use default magento translation files and can be translated within magento. %s is used in order to specify cart quantity.]]></comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+			<top_cart_empty translate="label">
+                            <label>Top cart empty string</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Default sting would be: My Cart]]></comment>
+                        </top_cart_empty>
+                        <top_cart_one translate="label">
+                            <label>Top 1 cart element string</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Default sting would be: My Cart (%s item)]]></comment>
+                        </top_cart_one>
+                        <top_cart_multiple translate="label">
+                            <label>Top multiple element cart string</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Default sting would be: My Cart (%s items)]]></comment>
+                        </top_cart_multiple>
+                        
+                    </fields>
+                </topcartconfig>
+                
+                <triggerevent translate="label comment" module="j2tajaxcheckout">
+                    <label>Javascript Events</label>
+                    <comment><![CDATA[Trigger js events while processing ajax operations.]]></comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+                        <j2t_ajax_cart_on_show_option translate="label">
+                            <label>On Show Options</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Trigger event when options are shown.]]></comment>
+                        </j2t_ajax_cart_on_show_option>
+                        <j2t_ajax_cart_on_show_confirm translate="label">
+                            <label>On Confirmation Box</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Trigger event when confirmation box is shown.]]></comment>
+                        </j2t_ajax_cart_on_show_confirm>
+                        
+                        <j2t_ajax_cart_after_delete translate="label">
+                            <label>After Delete</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Trigger event after delete.]]></comment>
+                        </j2t_ajax_cart_after_delete>
+                    </fields>
+                </triggerevent>
+            </groups>
+        </j2tajaxcheckout>
+    </sections>
+</config>
